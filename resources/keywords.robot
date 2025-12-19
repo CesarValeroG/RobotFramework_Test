@@ -36,8 +36,13 @@ Create Test Data List
 Get Dictionary Value Safely
     [Documentation]    Gets a value from dictionary with default if key doesn't exist
     [Arguments]    ${dictionary}    ${key}    ${default}=None
-    ${value}=    Get From Dictionary    ${dictionary}    ${key}    default=${default}
-    RETURN    ${value}
+    ${exists}=    Run Keyword And Return Status    Dictionary Should Contain Key    ${dictionary}    ${key}
+    IF    ${exists}
+        ${value}=    Get From Dictionary    ${dictionary}    ${key}
+        RETURN    ${value}
+    ELSE
+        RETURN    ${default}
+    END
 
 Log Test Information
     [Documentation]    Logs test information for debugging
