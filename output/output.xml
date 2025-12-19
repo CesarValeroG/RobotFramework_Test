@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2025-12-09T11:03:46.657830" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Toshiba\OneDrive\Documentos\NewProjects\PythonProjects\TestProject\tests">
+<suite id="s1-s1" name="TestCase2" source="C:\Users\Toshiba\OneDrive\Documentos\NewProjects\PythonProjects\TestProject\tests\TestCase2.robot">
+<test id="s1-s1-t1" name="Should Log Message And Assert True" line="6">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-12-09T11:03:46.719271" level="TRACE">Arguments: [ 'This is my second test case' ]</msg>
+<msg time="2025-12-09T11:03:46.719479" level="INFO">This is my second test case</msg>
+<msg time="2025-12-09T11:03:46.719582" level="TRACE">Return: None</msg>
+<arg>This is my second test case</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-12-09T11:03:46.719059" elapsed="0.000607"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<msg time="2025-12-09T11:03:46.720280" level="TRACE">Arguments: [ True ]</msg>
+<msg time="2025-12-09T11:03:46.720373" level="TRACE">Return: None</msg>
+<arg>${True}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2025-12-09T11:03:46.720116" elapsed="0.000302"/>
+</kw>
+<tag>demo</tag>
+<tag>demo2</tag>
+<status status="PASS" start="2025-12-09T11:03:46.717141" elapsed="0.003716"/>
+</test>
+<doc>This is a second sample Robot Framework test case CVG.</doc>
+<status status="PASS" start="2025-12-09T11:03:46.706633" elapsed="0.015397"/>
+</suite>
+<meta name="Randomized">Suites and tests (seed 7057348144593089913)</meta>
+<status status="PASS" start="2025-12-09T11:03:46.660608" elapsed="0.062672"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">demo</stat>
+<stat pass="1" fail="0" skip="0">demo2</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="TestCase2" id="s1-s1" pass="1" fail="0" skip="0">Tests.TestCase2</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
