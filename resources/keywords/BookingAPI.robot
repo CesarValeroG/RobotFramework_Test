@@ -52,3 +52,9 @@ Get Booking
     ${response}    GET On Session    booking_api    ${BOOKING_ENDPOINT}/${booking_id}
     RETURN    ${response}
 
+Delete Booking
+    [Arguments]    ${booking_id}    ${username}=admin    ${password}=password123
+    ${auth}    Evaluate    ('${username}', '${password}')
+    ${response}    DELETE On Session    booking_api    ${BOOKING_ENDPOINT}/${booking_id}    auth=${auth}
+    RETURN    ${response}
+

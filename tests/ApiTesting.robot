@@ -64,4 +64,16 @@ GetBooking
     Should Be Equal    ${checkin}    ${CHECKIN}
     Should Be Equal    ${checkout}    ${CHECKOUT}
 
+DeleteBooking
+    [Documentation]    Test to delete a booking and validate response
+    [Tags]    delete_booking
+    ${response}    Delete Booking    ${BOOKING_ID}    admin    password123
+
+    # Print response
+    Log    Status Code: ${response.status_code}
+    Log    Response Text: ${response.text}
+
+    # Validate status code
+    Should Be Equal As Integers    ${response.status_code}    201
+
 *** Keywords ***
