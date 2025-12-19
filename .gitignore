@@ -210,7 +210,4 @@ __marimo__/
 results/*.html
 results/*.xml
 results/*.png
-results/log.html
-results/report.html
-results/output.xml
 !results/.gitkeep
