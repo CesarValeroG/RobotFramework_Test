@@ -13,6 +13,16 @@ pipeline {
             }
         }
 
+        stage('Clean Old Results') {
+            steps {
+                echo 'Limpiando resultados anteriores...'
+                script {
+                    bat 'if exist results rmdir /S /Q results'
+                    bat 'mkdir results'
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 echo 'Construyendo imagen Docker...'
@@ -38,7 +48,7 @@ pipeline {
 
         stage('Publish Test Results') {
             steps {
-                echo 'Publicando resultados.. .'
+                echo 'Publicando resultados...'
                 robot outputPath: 'results'
             }
         }
@@ -58,7 +68,7 @@ pipeline {
             echo '✅ Tests ejecutados exitosamente!'
         }
         failure {
-            echo '❌ Los tests fallaron.  Revisa los reportes.'
+            echo '❌ Los tests fallaron.   Revisa los reportes.'
         }
     }
 }
