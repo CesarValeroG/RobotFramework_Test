@@ -1,366 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2025-12-19T16:20:59.612657" rpa="false" schemaversion="5">
-<suite id="s1" name="ApiTesting" source="C:\Users\Toshiba\OneDrive\Documentos\NewProjects\PythonProjects\TestProject\tests\ApiTesting.robot">
-<test id="s1-t1" name="CreateBooking" line="14">
-<kw name="Create Session For API" owner="BookingAPI">
-<kw name="Create Session" owner="RequestsLibrary">
-<msg time="2025-12-19T16:20:59.871279" level="INFO">Creating Session using : alias=booking_api, url=https://restful-booker.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<arg>booking_api</arg>
-<arg>${BASE_URL}</arg>
-<arg>verify=True</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2025-12-19T16:20:59.870783" elapsed="0.003850"/>
-</kw>
-<status status="PASS" start="2025-12-19T16:20:59.869785" elapsed="0.005204"/>
-</kw>
-<kw name="Create Booking" owner="BookingAPI">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-12-19T16:20:59.877072" level="INFO">${bookingdates} = {'checkin': '2018-07-01', 'checkout': '2019-07-20'}</msg>
-<var>${bookingdates}</var>
-<arg>checkin=${checkin}</arg>
-<arg>checkout=${checkout}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-12-19T16:20:59.876417" elapsed="0.000793"/>
-</kw>
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-12-19T16:20:59.878002" level="INFO">${request_body} = {'firstname': 'Jim', 'lastname': 'Brown', 'totalprice': '111', 'depositpaid': True, 'bookingdates': {'checkin': '2018-07-01', 'checkout': '2019-07-20'}, 'additionalneeds': 'Breakfast'}</msg>
-<var>${request_body}</var>
-<arg>firstname=${firstname}</arg>
-<arg>lastname=${lastname}</arg>
-<arg>totalprice=${totalprice}</arg>
-<arg>depositpaid=${depositpaid}</arg>
-<arg>bookingdates=${bookingdates}</arg>
-<arg>additionalneeds=${additionalneeds}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2025-12-19T16:20:59.877404" elapsed="0.000698"/>
-</kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2025-12-19T16:21:00.750530" level="INFO">POST Request : url=https://restful-booker.herokuapp.com/booking 
- path_url=/booking 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '184', 'Content-Type': 'application/json'} 
- body=b'{"firstname": "Jim", "lastname": "Brown", "totalprice": "111", "depositpaid": true, "bookingdates": {"checkin": "2018-07-01", "checkout": "2019-07-20"}, "additionalneeds": "Breakfast"}' 
- </msg>
-<msg time="2025-12-19T16:21:00.750820" level="INFO">POST Response : url=https://restful-booker.herokuapp.com/booking 
- status=200, reason=OK 
- headers={'Content-Length': '196', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Fri, 19 Dec 2025 21:21:00 GMT', 'Etag': 'W/"c4-4E7dIsEKhf0xvCXpDfSfpUsV7aM"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=AWry9CxzoNuSGpxr8TgXpz0KsxB07lACle6%2BlLClaX0%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1766179260"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=AWry9CxzoNuSGpxr8TgXpz0KsxB07lACle6%2BlLClaX0%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1766179260"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
- body={"bookingid":199,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-07-01","checkout":"2019-07-20"},"additionalneeds":"Breakfast"}} 
- </msg>
-<msg time="2025-12-19T16:21:00.751082" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>booking_api</arg>
-<arg>${BOOKING_ENDPOINT}</arg>
-<arg>json=${request_body}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-12-19T16:20:59.878291" elapsed="0.872900"/>
-</kw>
-<return>
-<value>${response}</value>
-<status status="PASS" start="2025-12-19T16:21:00.751377" elapsed="0.000221"/>
-</return>
-<msg time="2025-12-19T16:21:00.751974" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>${FIRSTNAME}</arg>
-<arg>${LASTNAME}</arg>
-<arg>${TOTALPRICE}</arg>
-<arg>${DEPOSITPAID}</arg>
-<arg>${CHECKIN}</arg>
-<arg>${CHECKOUT}</arg>
-<arg>${ADDITIONALNEEDS}</arg>
-<status status="PASS" start="2025-12-19T16:20:59.875520" elapsed="0.876553"/>
-</kw>
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2025-12-21T12:33:52.200852" rpa="false" schemaversion="5">
+<suite id="s1" name="TC1" source="C:\Users\Toshiba\OneDrive\Documentos\NewProjects\PythonProjects\TestProject\tests\TC1.robot">
+<test id="s1-t1" name="LoginTest" line="9">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.752936" level="INFO">Status Code: 200</msg>
-<arg>Status Code: ${response.status_code}</arg>
+<msg time="2025-12-21T12:33:52.652661" level="INFO">Hello World Robot Cesar</msg>
+<arg>Hello World Robot Cesar</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.752310" elapsed="0.000739"/>
+<status status="PASS" start="2025-12-21T12:33:52.652181" elapsed="0.002184"/>
 </kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.753734" level="INFO">Response Text: {"bookingid":199,"booking":{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-07-01","checkout":"2019-07-20"},"additionalneeds":"Breakfast"}}</msg>
-<arg>Response Text: ${response.text}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.753193" elapsed="0.000654"/>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-12-21T12:33:52.655260" level="INFO">Opening browser 'headlesschrome' to base url 'https://demo.nopcommerce.com/'.</msg>
+<arg>${url}</arg>
+<arg>${brwoser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-12-21T12:33:52.654774" elapsed="1.708993"/>
 </kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.754504" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.753987" elapsed="0.000643"/>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-12-21T12:33:54.364237" elapsed="0.034622"/>
 </kw>
-<kw name="Get Booking ID From Response" owner="BookingAPI">
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2025-12-19T16:21:00.755820" level="INFO">${booking_id} = 199</msg>
-<var>${booking_id}</var>
-<arg>${response.json()}</arg>
-<arg>bookingid</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.755217" elapsed="0.000686"/>
+<kw name="loginToApplication">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-12-21T12:33:54.400448" level="INFO">Clicking link 'xpath=//a[@class='ico-login']'.</msg>
+<msg time="2025-12-21T12:33:54.552052" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-12-21T12:33:54.552700" level="FAIL">Link with locator 'xpath=//a[@class='ico-login']' not found.</msg>
+<arg>xpath=//a[@class='ico-login']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="FAIL" start="2025-12-21T12:33:54.399877" elapsed="0.160378">Link with locator 'xpath=//a[@class='ico-login']' not found.</status>
 </kw>
-<return>
-<value>${booking_id}</value>
-<status status="PASS" start="2025-12-19T16:21:00.755999" elapsed="0.000092"/>
-</return>
-<msg time="2025-12-19T16:21:00.756271" level="INFO">${booking_id} = 199</msg>
-<var>${booking_id}</var>
-<arg>${response}</arg>
-<status status="PASS" start="2025-12-19T16:21:00.754863" elapsed="0.001524"/>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-12-21T12:33:54.560778" elapsed="0.000169"/>
 </kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.756741" level="INFO">Booking ID: 199</msg>
-<arg>Booking ID: ${booking_id}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.756543" elapsed="0.000302"/>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>id=Email</arg>
+<arg>pavonoltraining@gmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-12-21T12:33:54.561164" elapsed="0.000145"/>
 </kw>
-<kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.757272" level="INFO">${BOOKING_ID} = 199</msg>
-<arg>${BOOKING_ID}</arg>
-<arg>${booking_id}</arg>
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.757011" elapsed="0.000386"/>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>id=Password</arg>
+<arg>Test@123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-12-21T12:33:54.561532" elapsed="0.000121"/>
 </kw>
-<doc>Test to create a booking and validate response</doc>
-<status status="PASS" start="2025-12-19T16:20:59.868265" elapsed="0.889284"/>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//button[@class='button-1 login-button']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-12-21T12:33:54.561829" elapsed="0.000126"/>
+</kw>
+<status status="FAIL" start="2025-12-21T12:33:54.399388" elapsed="0.162787">Link with locator 'xpath=//a[@class='ico-login']' not found.</status>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-12-21T12:33:54.562416" elapsed="0.000146"/>
+</kw>
+<status status="FAIL" start="2025-12-21T12:33:52.650205" elapsed="1.912686">Link with locator 'xpath=//a[@class='ico-login']' not found.</status>
 </test>
-<test id="s1-t2" name="GetBooking" line="31">
-<kw name="Get Booking" owner="BookingAPI">
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2025-12-19T16:21:00.853807" level="INFO">GET Request : url=https://restful-booker.herokuapp.com/booking/199 
- path_url=/booking/199 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg time="2025-12-19T16:21:00.854040" level="INFO">GET Response : url=https://restful-booker.herokuapp.com/booking/199 
- status=200, reason=OK 
- headers={'Content-Length': '168', 'Content-Type': 'application/json; charset=utf-8', 'Date': 'Fri, 19 Dec 2025 21:21:00 GMT', 'Etag': 'W/"a8-g1zEKO56Oqa5GlM4Xzou0HvxI2Q"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=AWry9CxzoNuSGpxr8TgXpz0KsxB07lACle6%2BlLClaX0%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1766179260"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=AWry9CxzoNuSGpxr8TgXpz0KsxB07lACle6%2BlLClaX0%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1766179260"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
- body={"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-07-01","checkout":"2019-07-20"},"additionalneeds":"Breakfast"} 
- </msg>
-<msg time="2025-12-19T16:21:00.854282" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>booking_api</arg>
-<arg>${BOOKING_ENDPOINT}/${booking_id}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.759724" elapsed="0.094640"/>
-</kw>
-<return>
-<value>${response}</value>
-<status status="PASS" start="2025-12-19T16:21:00.854491" elapsed="0.000108"/>
-</return>
-<msg time="2025-12-19T16:21:00.854794" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>${BOOKING_ID}</arg>
-<status status="PASS" start="2025-12-19T16:21:00.759236" elapsed="0.095630"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.855606" level="INFO">Status Code: 200</msg>
-<arg>Status Code: ${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.855049" elapsed="0.000665"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.856367" level="INFO">Response Text: {"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-07-01","checkout":"2019-07-20"},"additionalneeds":"Breakfast"}</msg>
-<arg>Response Text: ${response.text}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.855861" elapsed="0.000628"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.857198" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.856637" elapsed="0.000723"/>
-</kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2025-12-19T16:21:00.858544" level="INFO">${firstName} = Jim</msg>
-<var>${firstName}</var>
-<arg>${response.json()}</arg>
-<arg>firstname</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.857570" elapsed="0.001104"/>
-</kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2025-12-19T16:21:00.859545" level="INFO">${lastName} = Brown</msg>
-<var>${lastName}</var>
-<arg>${response.json()}</arg>
-<arg>lastname</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.858873" elapsed="0.000764"/>
-</kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2025-12-19T16:21:00.860427" level="INFO">${totalPrice} = 111</msg>
-<var>${totalPrice}</var>
-<arg>${response.json()}</arg>
-<arg>totalprice</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.859809" elapsed="0.000709"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.860906" level="INFO">First Name: Jim</msg>
-<arg>First Name: ${firstName}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.860690" elapsed="0.000332"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.861390" level="INFO">Last Name: Brown</msg>
-<arg>Last Name: ${lastName}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.861176" elapsed="0.000319"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.861844" level="INFO">Total Price: 111</msg>
-<arg>Total Price: ${totalPrice}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.861639" elapsed="0.000310"/>
-</kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2025-12-19T16:21:00.862706" level="INFO">${bookingdates} = {'checkin': '2018-07-01', 'checkout': '2019-07-20'}</msg>
-<var>${bookingdates}</var>
-<arg>${response.json()}</arg>
-<arg>bookingdates</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.862096" elapsed="0.000691"/>
-</kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2025-12-19T16:21:00.863205" level="INFO">${checkin} = 2018-07-01</msg>
-<var>${checkin}</var>
-<arg>${bookingdates}</arg>
-<arg>checkin</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.862940" elapsed="0.000346"/>
-</kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2025-12-19T16:21:00.864179" level="INFO">${checkout} = 2019-07-20</msg>
-<var>${checkout}</var>
-<arg>${bookingdates}</arg>
-<arg>checkout</arg>
-<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.863731" elapsed="0.000549"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.864672" level="INFO">Check-in Date: 2018-07-01</msg>
-<arg>Check-in Date: ${checkin}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.864457" elapsed="0.000324"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.865134" level="INFO">Check-out Date: 2019-07-20</msg>
-<arg>Check-out Date: ${checkout}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.864928" elapsed="0.000313"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${firstName}</arg>
-<arg>${FIRSTNAME}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.865412" elapsed="0.000275"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${lastName}</arg>
-<arg>${LASTNAME}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.865840" elapsed="0.000259"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<arg>${totalPrice}</arg>
-<arg>${TOTALPRICE}</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.866255" elapsed="0.000268"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${checkin}</arg>
-<arg>${CHECKIN}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.866677" elapsed="0.000260"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${checkout}</arg>
-<arg>${CHECKOUT}</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.867088" elapsed="0.000257"/>
-</kw>
-<doc>Test to get a booking by ID and validate response</doc>
-<tag>get_booking</tag>
-<status status="PASS" start="2025-12-19T16:21:00.758545" elapsed="0.108970"/>
-</test>
-<test id="s1-t3" name="DeleteBooking" line="67">
-<kw name="Delete Booking" owner="BookingAPI">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.870727" level="INFO">${auth} = ('admin', 'password123')</msg>
-<var>${auth}</var>
-<arg>('${username}', '${password}')</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.870250" elapsed="0.000588"/>
-</kw>
-<kw name="DELETE On Session" owner="RequestsLibrary">
-<msg time="2025-12-19T16:21:00.964956" level="INFO">DELETE Request : url=https://restful-booker.herokuapp.com/booking/199 
- path_url=/booking/199 
- headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0', 'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='} 
- body=None 
- </msg>
-<msg time="2025-12-19T16:21:00.965527" level="INFO">DELETE Response : url=https://restful-booker.herokuapp.com/booking/199 
- status=201, reason=Created 
- headers={'Content-Length': '7', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Fri, 19 Dec 2025 21:21:00 GMT', 'Etag': 'W/"7-rM9AyJuqT6iOan/xHh+AW+7K/T8"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=AWry9CxzoNuSGpxr8TgXpz0KsxB07lACle6%2BlLClaX0%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1766179260"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=AWry9CxzoNuSGpxr8TgXpz0KsxB07lACle6%2BlLClaX0%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1766179260"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
- body=Created 
- </msg>
-<msg time="2025-12-19T16:21:00.966233" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<var>${response}</var>
-<arg>booking_api</arg>
-<arg>${BOOKING_ENDPOINT}/${booking_id}</arg>
-<arg>auth=${auth}</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.871023" elapsed="0.095511"/>
-</kw>
-<return>
-<value>${response}</value>
-<status status="PASS" start="2025-12-19T16:21:00.966903" elapsed="0.000301"/>
-</return>
-<msg time="2025-12-19T16:21:00.967839" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<var>${response}</var>
-<arg>${BOOKING_ID}</arg>
-<arg>admin</arg>
-<arg>password123</arg>
-<status status="PASS" start="2025-12-19T16:21:00.869603" elapsed="0.098483"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.970664" level="INFO">Status Code: 201</msg>
-<arg>Status Code: ${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.968720" elapsed="0.002335"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.973387" level="INFO">Response Text: Created</msg>
-<arg>Response Text: ${response.text}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.971582" elapsed="0.002268"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-12-19T16:21:00.977041" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${response.status_code}</arg>
-<arg>201</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-12-19T16:21:00.974360" elapsed="0.003151"/>
-</kw>
-<doc>Test to delete a booking and validate response</doc>
-<tag>delete_booking</tag>
-<status status="PASS" start="2025-12-19T16:21:00.868777" elapsed="0.109259"/>
-</test>
-<status status="PASS" start="2025-12-19T16:20:59.640051" elapsed="1.340049"/>
+<status status="FAIL" start="2025-12-21T12:33:52.222262" elapsed="2.341824"/>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">delete_booking</stat>
-<stat pass="1" fail="0" skip="0">get_booking</stat>
 </tag>
 <suite>
-<stat name="ApiTesting" id="s1" pass="3" fail="0" skip="0">ApiTesting</stat>
+<stat name="TC1" id="s1" pass="0" fail="1" skip="0">TC1</stat>
 </suite>
 </statistics>
 <errors>

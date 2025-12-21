@@ -4,7 +4,7 @@ Test Setup      Open And Maximize Browser
 Test Teardown   Close Browser
 
 *** Variables ***
-${brwoser}      chrome      # headlesschrome to run without opening the browser window
+${brwoser}      headlesschrome      # headlesschrome to run without opening the browser window
 ${url}          https://www.saucedemo.com/
 
 *** Test Cases ***
@@ -24,8 +24,17 @@ InvalidCredentialsTest
 
 *** Keywords ***
 Open And Maximize Browser
-    Open Browser    ${url}    ${brwoser}
-    Maximize Browser Window
+    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver']. ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    --headless
+    Call Method    ${chrome_options}    add_argument    --no-sandbox
+    Call Method    ${chrome_options}    add_argument    --disable-dev-shm-usage
+    Call Method    ${chrome_options}    add_argument    --disable-gpu
+    Call Method    ${chrome_options}    add_argument    --start-maximized
+
+    Open Browser    ${url}    chrome    options=${chrome_options}
+    # Nota: Maximize no funciona en headless, pero el tamaño se configuró arriba
+#    Open Browser    ${url}    ${brwoser}
+#    Maximize Browser Window
 
 loginToApplication
     [Arguments]    ${username}    ${password}
