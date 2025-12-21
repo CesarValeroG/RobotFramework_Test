@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "robot-framework-test"
-        ROBOT_REPORTS_DIR = "results"
     }
 
     stages {
@@ -28,7 +27,7 @@ pipeline {
                 echo 'Ejecutando tests de Robot Framework...'
                 script {
                     docker.image("${DOCKER_IMAGE}:${BUILD_NUMBER}").inside {
-                        sh 'robot --outputdir results --output output.xml --log log.html --report report.html .'
+                        bat 'robot --outputdir results --output output.xml --log log.html --report report.html .'
                     }
                 }
             }
@@ -37,24 +36,16 @@ pipeline {
         stage('Publish Test Results') {
             steps {
                 echo 'Publicando resultados.. .'
-                robot(
-                    outputPath: 'results',
-                    outputFileName: 'output.xml',
-                    reportFileName: 'report.html',
-                    logFileName: 'log.html',
-                    disableArchiveOutput: false,
-                    passThreshold: 80,
-                    unstableThreshold: 70,
-                    onlyCritical: true
-                )
+                // Versión simplificada sin parámetros problemáticos
+                robot outputPath: 'results'
             }
         }
     }
 
     post {
         always {
-            echo 'Limpiando workspace...'
-            cleanWs()
+            echo 'Archivando reportes...'
+            archiveArtifacts artifacts: 'results/**/*', allowEmptyArchive: true
         }
         success {
             echo '✅ Tests ejecutados exitosamente!'
