@@ -27,4 +27,4 @@ COPY . .
 RUN mkdir -p /robot/results
 
 # Comando por defecto - ejecuta SOLO TCX y ApiTesting
-CMD ["robot", "--outputdir", "results", "tests/TCX", "tests/ApiTesting"]
+CMD ["robot", "--outputdir", "results", "tests/TCX.robot", "tests/ApiTesting"]
