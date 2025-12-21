@@ -15,10 +15,10 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copiar requirements
-COPY requirements. txt ./
+COPY requirements.txt ./
 
 # Instalar Robot Framework
-RUN pip install --no-cache-dir -r requirements. txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar proyecto
 COPY . .
