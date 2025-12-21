@@ -24,11 +24,8 @@ pipeline {
 
         stage('Run Robot Framework Tests') {
             steps {
-                echo 'Ejecutando tests de Robot Framework.. .'
+                echo 'Ejecutando tests de Robot Framework...'
                 script {
-                    // Limpiar resultados anteriores si existen
-                    bat 'if exist results\\*. * del /Q results\\*.*'
-
                     // Ejecutar contenedor y copiar resultados
                     bat """
                         docker run --name robot-test-${BUILD_NUMBER} ${DOCKER_IMAGE}:${BUILD_NUMBER}
@@ -41,7 +38,7 @@ pipeline {
 
         stage('Publish Test Results') {
             steps {
-                echo 'Publicando resultados...'
+                echo 'Publicando resultados.. .'
                 robot outputPath: 'results'
             }
         }
@@ -50,7 +47,7 @@ pipeline {
     post {
         always {
             echo 'Archivando reportes...'
-            archiveArtifacts artifacts: 'results/**/*', allowEmptyArchive: true
+            archiveArtifacts artifacts:  'results/**/*', allowEmptyArchive: true
 
             echo 'Limpiando imagen Docker...'
             script {
