@@ -13,16 +13,6 @@ pipeline {
             }
         }
 
-        stage('Clean Old Results') {
-            steps {
-                echo 'Limpiando resultados anteriores...'
-                script {
-                    bat 'if exist results rmdir /S /Q results'
-                    bat 'mkdir results'
-                }
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 echo 'Construyendo imagen Docker...'
@@ -34,8 +24,11 @@ pipeline {
 
         stage('Run Robot Framework Tests') {
             steps {
-                echo 'Ejecutando tests de Robot Framework...'
+                echo 'Ejecutando tests de Robot Framework.. .'
                 script {
+                    // Limpiar resultados anteriores si existen
+                    bat 'if exist results\\*. * del /Q results\\*.*'
+
                     // Ejecutar contenedor y copiar resultados
                     bat """
                         docker run --name robot-test-${BUILD_NUMBER} ${DOCKER_IMAGE}:${BUILD_NUMBER}
@@ -68,7 +61,7 @@ pipeline {
             echo '✅ Tests ejecutados exitosamente!'
         }
         failure {
-            echo '❌ Los tests fallaron.   Revisa los reportes.'
+            echo '❌ Los tests fallaron. Revisa los reportes.'
         }
     }
 }
